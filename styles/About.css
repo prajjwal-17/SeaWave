@@ -10,7 +10,7 @@ body {
     padding: 0;
     box-sizing: border-box;
     background: #F0F3F5;
-    overflow-x: hidden; /* Prevents horizontal scrolling */
+    overflow-x: hidden;
 }
 
 
@@ -95,12 +95,13 @@ nav {
 
 
 /*Hero-section*/
-.heroSection{
+.heroSection {
     display: flex;
     flex-direction: row;
     height: 70vh;
-    width: 100vw ; 
+    width: 100vw;
     margin-bottom: 5vh;
+    animation: fadeSlideIn 1s ease-in-out;
 }
 
 .heroText{
@@ -137,11 +138,12 @@ nav {
     font-size: 16px;
     cursor: pointer;
     border-radius: 25px;
-    transition: background-color 0.3s ease;
+    transition: transform 0.3s ease-in-out;
 }
 
 .btn:hover {
     background-color: #004080;
+    transform: scale(1.1);
 }
 
 
@@ -168,6 +170,24 @@ nav {
     justify-content: center;
     margin-top: 5vh;
     
+}
+
+.card1 {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.card1.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Hover Animations */
+.card1:hover, .card2:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
 }
 
 .card2{
@@ -324,3 +344,26 @@ footer {
 .footer-contact-form button:hover {
     background: rgba(255, 255, 255, 0.5);
 }
+
+/* Fade-in Effect for Sections */
+.heroSection, .midSection, .midLowerSec {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.heroSection.visible, .midSection.visible, .midLowerSec.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}   

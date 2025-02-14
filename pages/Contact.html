@@ -97,6 +97,21 @@
     });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+        const sections = document.querySelectorAll(".contact-container, .contact-info, .contact-form, .contact-image img, footer");
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => observer.observe(section));
+    });
+
     </script>
 </body>
 </html>
